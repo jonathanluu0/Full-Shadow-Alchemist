@@ -184,5 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  maxDistance: 10
+  maxDistance: 5
   explosionEffect: {fileID: 7400030917447255509, guid: 8640dec296f180d47972e24645d5cd78, type: 3}
+  explosionEffectPrefab: {fileID: 7400030917447255509, guid: 8640dec296f180d47972e24645d5cd78, type: 3}

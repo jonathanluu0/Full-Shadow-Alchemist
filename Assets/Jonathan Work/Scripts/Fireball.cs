@@ -45,7 +45,10 @@ public class Fireball : MonoBehaviour
         // Instantiate explosion effect
         if (explosionEffect != null)
         {
-            Instantiate(explosionEffect, transform.position, transform.rotation);
+            //Instantiate(explosionEffect, transform.position, transform.rotation);
+            GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
+            // Rotate the explosion effect by 90 degrees around the Z-axis
+            explosion.transform.Rotate(0, 0, -90);
         }
 
         // Destroy the fireball
