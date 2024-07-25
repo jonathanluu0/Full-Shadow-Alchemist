@@ -4,6 +4,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
+    public GameManager gameManager;
 
     void Start()
     {
@@ -26,9 +27,13 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player Died");
         #if UNITY_EDITOR
+            gameManager.GameOver();
             UnityEditor.EditorApplication.isPlaying = false;
+            gameManager.GameOver();
         #else
+            gameManager.GameOver();
             Application.Quit();
+            gameManager.GameOver();
         #endif
     }
 }
