@@ -6,11 +6,13 @@ public class EnemyHealth : MonoBehaviour
     private int currentHealth;
     public float damageCooldown = 1f; // Cooldown period in seconds
     private float lastDamageTime; // Time when the last damage was applied
+    private Enemy enemy;
 
     void Start()
     {
         currentHealth = maxHealth;
         lastDamageTime = -damageCooldown; // Ensure the player can take damage immediately
+        enemy = GetComponent<Enemy>();
         Debug.Log("Enemy initialized with " + currentHealth + " health.");
     }
 
@@ -28,7 +30,10 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy Died");
-        Destroy(gameObject);
+        if (enemy != null)
+        {
+            enemy.Die(); // Call the Die method in the Enemy class
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
