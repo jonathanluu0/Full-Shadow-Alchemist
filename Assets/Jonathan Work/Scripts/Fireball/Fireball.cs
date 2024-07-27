@@ -36,7 +36,6 @@ public class Fireball : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Check for collision with other objects
         Explode();
     }
 
@@ -55,5 +54,5 @@ public class Fireball : MonoBehaviour
         Destroy(gameObject);
     }
 
-
+    
 }
