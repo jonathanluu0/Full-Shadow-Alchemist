@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5478dea1a9ec874aa4b2c68c722e562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1369571812}
+  target: {fileID: 1408957591}
   offset: {x: 0, y: 0, z: -10}
 --- !u!4 &1369571812 stripped
 Transform:
@@ -357,39 +357,6 @@ MonoBehaviour:
   experience: 0
   experienceToNextLevel: 100
   experienceBar: {fileID: 414394109}
---- !u!114 &1408957579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408957575}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 456da367625e98f41bf555435c495e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  gameManager: {fileID: 1770268954}
---- !u!114 &1408957580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408957575}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1aa42ff9365fa840bd3f2164591c839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneCamera: {fileID: 1305675696}
-  moveSpeed: 5
-  lastHorizontalVector: 0
-  lastVerticalVector: 0
-  moveDir: {x: 0, y: 0}
-  fireballPrefab: {fileID: 4027033073872401091, guid: fc18ebec1651bf8499cb6ce33ddb0adc, type: 3}
-  firePoint: {fileID: 1543764697}
 --- !u!50 &1408957582
 Rigidbody2D:
   serializedVersion: 4
@@ -476,16 +443,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257f64022cd4ea448aba07654032a4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   sceneCamera: {fileID: 1305675696}
-  lastHorizontalVector: 0
-  lastVerticalVector: 0
-  moveDir: {x: 0, y: 0}
-  fireballPrefab: {fileID: 4027033073872401091, guid: fc18ebec1651bf8499cb6ce33ddb0adc, type: 3}
-  firePoint: {fileID: 1543764697}
-  maxHealth: 100
   gameManager: {fileID: 1408957577}
   skeletonParent: {fileID: 1408957591}
+  moveSpeed: 5
+  moveDir: {x: 0, y: 0}
+  maxHealth: 100
+  fireballPrefab: {fileID: 4027033073872401091, guid: fc18ebec1651bf8499cb6ce33ddb0adc, type: 3}
+  firePoint: {fileID: 1543764697}
 --- !u!4 &1408957591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
@@ -712,12 +677,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4105362945620786469, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1408957586}
-    - targetCorrespondingSourceObject: {fileID: 4105362945620786469, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1408957580}
-    - targetCorrespondingSourceObject: {fileID: 4105362945620786469, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1408957579}
     - targetCorrespondingSourceObject: {fileID: 4105362945620786469, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1408957578}
