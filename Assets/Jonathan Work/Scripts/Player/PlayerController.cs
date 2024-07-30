@@ -4,31 +4,29 @@ namespace ClearSky
 {
     public class PlayerController : MonoBehaviour
     {
+        // Components
         private Rigidbody2D rb;
         private Animator anim;
-        private bool alive = true;
-        public float moveSpeed;
-        private Vector2 mousePos;
         public Camera sceneCamera;
+        public GameManager gameManager;
+        public Transform skeletonParent;
 
-        [HideInInspector]
-        public float lastHorizontalVector;
-        [HideInInspector]
-        public float lastVerticalVector;
+        // Movement
+        public float moveSpeed;
+        private int direction = 1;
         [HideInInspector]
         public Vector2 moveDir;
+        private Vector2 mousePos;
+        Vector3 movement;
 
-        public GameObject fireballPrefab;
-        public Transform firePoint;
-
+        // Health
         public int maxHealth = 100;
         private int currentHealth;
-        public GameManager gameManager;
+        private bool alive = true;
 
-        public Transform skeletonParent;
-        Vector3 movement;
-        private int direction = 1;
-
+        // Combat
+        public GameObject fireballPrefab;
+        public Transform firePoint;
 
         void Start()
         {
@@ -61,17 +59,6 @@ namespace ClearSky
 
             moveDir = new Vector2(moveX, moveY).normalized;
             mousePos = sceneCamera.ScreenToWorldPoint(Input.mousePosition);
-
-            // stores last input value before movement stops so player faces correct direction
-            if (moveDir.x != 0)
-            {
-                lastHorizontalVector = moveDir.x;
-            }
-
-            if (moveDir.y != 0)
-            {
-                lastVerticalVector = moveDir.y;
-            }
     
             if (moveDir != Vector2.zero)
             {
@@ -86,11 +73,6 @@ namespace ClearSky
             {
                 Attack();
             }
-
-            // if (Input.GetKeyDown(KeyCode.Alpha2))
-            // {
-            //     TakeDamage(10); // Example damage value
-            // }
         }
     
         private void Move()
