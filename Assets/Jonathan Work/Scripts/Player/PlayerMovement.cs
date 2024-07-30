@@ -65,16 +65,12 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
-
-        //Rotate player to follow mouse
-        Vector2 aimDir = mousePos - rb.position;
-        float aimAngle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = aimAngle;
     }
 
 
     void Shoot()
-    {
+    {   
+        
         Vector2 firePointPosition = firePoint.position;
         Vector2 direction = (mousePos - firePointPosition).normalized;
 

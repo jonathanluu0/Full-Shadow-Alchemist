@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
     public GameManager gameManager;
-
+    
     void Start()
     {
         currentHealth = maxHealth;

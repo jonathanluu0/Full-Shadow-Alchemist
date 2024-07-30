@@ -17,6 +17,8 @@ public class DropRateManager : MonoBehaviour
 
     void OnDestroy()
     {
+        if(!gameObject.scene.isLoaded) { return; } // ensures game objects spawn only when scene is loaded
+
         float rng = UnityEngine.Random.Range(0, 100f);
         List<Drops> possibleDrops = new List<Drops>();
         foreach (Drops rate in drops)
