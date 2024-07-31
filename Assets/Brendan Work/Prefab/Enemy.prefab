@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8324294633632895011}
   - component: {fileID: 3941125264602480839}
   - component: {fileID: 3516528865083724918}
+  - component: {fileID: 2662204266399530039}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -162,11 +163,7 @@ MonoBehaviour:
   - name: Fire Potion
     itemPrefab: {fileID: 7836584586807393160, guid: f08ce0c82015c924e8393243a8bdfaa9, type: 3}
     dropRate: 50
-<<<<<<< Updated upstream
   - name: Experience
-=======
-  - name: Weapon
->>>>>>> Stashed changes
     itemPrefab: {fileID: 6013364167045350755, guid: 8d220616fca2884409ab6eab61a0d426, type: 3}
     dropRate: 50
 --- !u!70 &3941125264602480839
@@ -225,3 +222,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2662204266399530039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6916292444561239637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93463819433557f478b275767b671fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePrefab: {fileID: 6013364167045350755, guid: 8d220616fca2884409ab6eab61a0d426, type: 3}

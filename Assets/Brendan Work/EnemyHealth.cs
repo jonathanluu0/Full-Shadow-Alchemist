@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     private Enemy enemy;
     public Animator animComponent;
     private Collider2D enemyCollider; // Reference to the enemy's collider
+    private EnemyMovement enemyMovement; // Reference to the enemy's movement script
     private bool isDead = false; // Flag to check if the enemy is dead
 
     void Start()
@@ -18,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
         lastDamageTime = -damageCooldown; // Ensure the player can take damage immediately
         enemy = GetComponent<Enemy>();
         enemyCollider = GetComponent<Collider2D>(); // Get the collider component
+        enemyMovement = GetComponent<EnemyMovement>(); // Get the movement script component
         Debug.Log("Enemy initialized with " + currentHealth + " health.");
     }
 
@@ -44,9 +46,9 @@ public class EnemyHealth : MonoBehaviour
         {
             animComponent.SetTrigger("die");
             enemyCollider.enabled = false; // Disable the collider
-            if (enemy != null)
+            if (enemyMovement != null)
             {
-                enemy.enabled = false; // Disable the enemy movement script
+                enemyMovement.enabled = false; // Disable the enemy movement script
             }
             StartCoroutine(WaitForDeathAnimation());
         }
@@ -61,9 +63,11 @@ public class EnemyHealth : MonoBehaviour
         // Wait for the length of the death animation
         AnimatorStateInfo stateInfo = animComponent.GetCurrentAnimatorStateInfo(0);
         float waitTime = stateInfo.length > 0 ? stateInfo.length : 1f; // Default to 1 second if length is not valid
+        Debug.Log("Waiting for death animation to finish. Duration: " + waitTime);
         yield return new WaitForSeconds(waitTime);
 
         // Destroy the enemy game object after the animation
+        Debug.Log("Destroying enemy game object.");
         Destroy(gameObject);
     }
 
