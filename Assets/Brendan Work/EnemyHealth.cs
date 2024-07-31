@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+
 public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 100;
@@ -9,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     private Enemy enemy;
     public Animator animComponent;
     private Collider2D enemyCollider; // Reference to the enemy's collider
+    private bool isDead = false; // Flag to check if the enemy is dead
 
     void Start()
     {
@@ -21,6 +23,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isDead) return; // Prevent taking damage if already dead
+
         currentHealth -= amount;
         Debug.Log("Enemy took " + amount + " damage, current health: " + currentHealth);
 
@@ -32,11 +36,18 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        if (isDead) return; // Prevent multiple death triggers
+
+        isDead = true;
         Debug.Log("Enemy Died");
         if (enemy != null && animComponent != null)
         {
             animComponent.SetTrigger("die");
             enemyCollider.enabled = false; // Disable the collider
+            if (enemy != null)
+            {
+                enemy.enabled = false; // Disable the enemy movement script
+            }
             StartCoroutine(WaitForDeathAnimation());
         }
         else
@@ -49,7 +60,8 @@ public class EnemyHealth : MonoBehaviour
     {
         // Wait for the length of the death animation
         AnimatorStateInfo stateInfo = animComponent.GetCurrentAnimatorStateInfo(0);
-        yield return new WaitForSeconds(stateInfo.length);
+        float waitTime = stateInfo.length > 0 ? stateInfo.length : 1f; // Default to 1 second if length is not valid
+        yield return new WaitForSeconds(waitTime);
 
         // Destroy the enemy game object after the animation
         Destroy(gameObject);
@@ -57,6 +69,8 @@ public class EnemyHealth : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
+        if (isDead) return; // Prevent interactions if already dead
+
         Debug.Log("Collision ongoing with " + collision.gameObject.name);
 
         if (collision.gameObject.CompareTag("Player"))
