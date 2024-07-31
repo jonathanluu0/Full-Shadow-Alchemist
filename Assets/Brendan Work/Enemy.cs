@@ -3,9 +3,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject experiencePrefab; // Prefab to spawn when enemy dies
-
     public void Die()
     {
+        
         DropExperience();
         Destroy(gameObject);
     }

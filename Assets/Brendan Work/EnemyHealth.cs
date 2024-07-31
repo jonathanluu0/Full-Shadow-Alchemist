@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 100;
@@ -7,12 +7,15 @@ public class EnemyHealth : MonoBehaviour
     public float damageCooldown = 1f; // Cooldown period in seconds
     private float lastDamageTime; // Time when the last damage was applied
     private Enemy enemy;
+    public Animator animComponent;
+    private Collider2D enemyCollider; // Reference to the enemy's collider
 
     void Start()
     {
         currentHealth = maxHealth;
         lastDamageTime = -damageCooldown; // Ensure the player can take damage immediately
         enemy = GetComponent<Enemy>();
+        enemyCollider = GetComponent<Collider2D>(); // Get the collider component
         Debug.Log("Enemy initialized with " + currentHealth + " health.");
     }
 
@@ -30,10 +33,26 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy Died");
-        if (enemy != null)
+        if (enemy != null && animComponent != null)
         {
-            enemy.Die(); // Call the Die method in the Enemy class
+            animComponent.SetTrigger("die");
+            enemyCollider.enabled = false; // Disable the collider
+            StartCoroutine(WaitForDeathAnimation());
         }
+        else
+        {
+            Destroy(gameObject); // Fallback in case of missing components
+        }
+    }
+
+    private IEnumerator WaitForDeathAnimation()
+    {
+        // Wait for the length of the death animation
+        AnimatorStateInfo stateInfo = animComponent.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
+
+        // Destroy the enemy game object after the animation
+        Destroy(gameObject);
     }
 
     void OnCollisionStay2D(Collision2D collision)

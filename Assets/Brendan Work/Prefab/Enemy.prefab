@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damageCooldown: 1
+  animComponent: {fileID: 3516528865083724918}
 --- !u!114 &8324294633632895011
 MonoBehaviour:
   m_ObjectHideFlags: 0
