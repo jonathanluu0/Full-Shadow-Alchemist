@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ProjectileDamage : MonoBehaviour
 {
-    public int damageAmount; // Amount of damage this projectile deals
+    public int damageAmount = 10; // Amount of damage this projectile deals
     
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,5 +17,11 @@ public class ProjectileDamage : MonoBehaviour
 
         // Optionally destroy the projectile after it hits something
         Destroy(gameObject);
+    }
+
+    public void IncreaseDamage(int amount)
+    {
+        damageAmount += amount;
+        Debug.Log("Damage increased to: " + damageAmount);
     }
 }

@@ -162,7 +162,11 @@ MonoBehaviour:
   - name: Fire Potion
     itemPrefab: {fileID: 7836584586807393160, guid: f08ce0c82015c924e8393243a8bdfaa9, type: 3}
     dropRate: 50
+<<<<<<< Updated upstream
   - name: Experience
+=======
+  - name: Weapon
+>>>>>>> Stashed changes
     itemPrefab: {fileID: 6013364167045350755, guid: 8d220616fca2884409ab6eab61a0d426, type: 3}
     dropRate: 50
 --- !u!70 &3941125264602480839

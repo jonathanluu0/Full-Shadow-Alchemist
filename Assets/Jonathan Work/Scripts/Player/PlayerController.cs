@@ -128,6 +128,12 @@ namespace ClearSky
             }
         }
 
+        public void IncreaseSpeed(float amount)
+        {
+            moveSpeed += amount;
+            Debug.Log("Speed increased to: " + moveSpeed);
+        }
+
         void Run()
         {
             Vector3 moveVelocity = Vector3.zero;

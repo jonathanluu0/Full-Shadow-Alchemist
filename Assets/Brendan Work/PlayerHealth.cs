@@ -23,6 +23,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void IncreaseHealth(int amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
+        Debug.Log("Health increased to: " + maxHealth);
+    }
+
     void Die()
     {
         Debug.Log("Player Died");
